@@ -46,13 +46,15 @@ vector.setXYZ(0,1,2); // sets the x, y, and z component values to 0, 1, and 2 re
 The first type of copying is a direct value copy of each component of another vector.
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
-var vector2 = new Vec.V3().copy(vector1); // the component values of vector2 are now equal to the component values of vector1
+var vector2 = new Vec.V3().copy(vector1);
+// the component values of vector2 are now equal to the component values of vector1
 ```
 
 The second type of copying creates an entirely new vector with a direct value copy of each component of a vector.
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
-var vector2 = vector1.clone(); // the component values of vector2 are now equal to the component values of vector1
+var vector2 = vector1.clone();
+// the component values of vector2 are now equal to the component values of vector1
 ```
 
 The difference between the copy and clone methods is that copying reuses an existing vector reference while cloning creates an entirely new vector. If possible, copying is preferred over cloning since it reduces memory usage and [garbage collection](https://javascript.info/garbage-collection) by reusing references.
