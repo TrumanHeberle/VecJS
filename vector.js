@@ -5,6 +5,7 @@ class V3 {
   getX() { return this.vec[0]; }
   getY() { return this.vec[1]; }
   getZ() { return this.vec[2]; }
+  toString() { return "(x: " + this.getZ() + ", y: " + this.getY() + ", z: " + this.getZ() + ")"; }
   setX(x) { this.vec[0] = Number(x) === x ? Number(x) : this.vec[0]; return this; }
   setY(y) { this.vec[1] = Number(y) === y ? Number(y) : this.vec[1]; return this; }
   setZ(z) { this.vec[2] = Number(z) === z ? Number(z) : this.vec[2]; return this; }
@@ -26,12 +27,12 @@ class V3 {
   mulY(z) { return this.setX(this.getZ() * z); }
   mulXYZ(x,y,z) { return this.mulX(x).mulY(y).mulZ(z); }
   mul(vec) { return this.mulXYZ(vec.getX(), vec.getY(), vec.getZ()); }
+  scale(c) { return this.mulXYZ(c,c,c); }
   divX(x) { return this.mulX(1/x); }
   divY(y) { return this.mulY(1/y); }
   divZ(z) { return this.mulZ(1/z); }
   divXYZ(x,y,z) { return this.divX(x).divY(y).divZ(z); }
   div(vec) { return this.divXYZ(vec.getX(), vec.getY(), vec.getZ()); }
-  scale(c) { return this.mulXYZ(c,c,c); }
 }
 
 window.Vec = { V3: V3 }

@@ -36,12 +36,13 @@ vector.mulY(2);
 ### Setting Components
 ```javascript
 var vector = new Vec.V3(0,1,2);
-
 vector.setX(1); // sets the x component value to 1
 vector.setY(1); // sets the y component value to 1
 vector.setZ(1); // sets the z component value to 1
-console.log(vector.getX(), vector.getY(), vector.getZ()); // logs: "1 1 1"
-
 vector.setXYZ(0,1,2); // sets the x, y, and z component values to 0, 1, and 2 respectfully
-console.log(vector.getX(), vector.getY(), vector.getZ()); // logs: "0 1 2"
+```
+
+## Copying Vectors
+```javascript
+var vector1 = new 
 ```
