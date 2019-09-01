@@ -1,14 +1,23 @@
 if (window.Vec) { console.warn("Vec module already exists, overwriting..."); }
 
+/*class V3Array {
+  constructor(a) {
+    if ()
+  }
+}*/
+
 class V3 {
   constructor(x,y,z) { this.vec = new Float32Array([x,y,z]); }
+  // core - access properties directly
   getX() { return this.vec[0]; }
   getY() { return this.vec[1]; }
   getZ() { return this.vec[2]; }
-  toString() { return "(x: " + this.getZ() + ", y: " + this.getY() + ", z: " + this.getZ() + ")"; }
+  getBuffer() { return this.vec.buffer; }
   setX(x) { this.vec[0] = Number(x) === x ? Number(x) : this.vec[0]; return this; }
   setY(y) { this.vec[1] = Number(y) === y ? Number(y) : this.vec[1]; return this; }
   setZ(z) { this.vec[2] = Number(z) === z ? Number(z) : this.vec[2]; return this; }
+  // derived - access properties indirectly
+  toString() { return "(x: " + this.getZ() + ", y: " + this.getY() + ", z: " + this.getZ() + ")"; }
   setXYZ(x,y,z) { return this.setX(x).setY(y).setZ(z); }
   copy(vec) { return this.setXYZ(vec.getX(), vec.getY(), vec.getZ()); }
   clone() { return new V3(this.getX(), this.getY(), this.getZ()); }
