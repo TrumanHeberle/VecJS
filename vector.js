@@ -2,7 +2,6 @@ if (window.Vec) { console.warn("Vec module already exists, overwriting..."); }
 
 class V3 {
   constructor(x,y,z) { this.vec = new Float32Array([x,y,z]); }
-  clone() { return new V3(this.vec[0], this.vec[1], this.vec[2]); }
   getX() { return this.vec[0]; }
   getY() { return this.vec[1]; }
   getZ() { return this.vec[2]; }
@@ -10,7 +9,8 @@ class V3 {
   setY(y) { this.vec[1] = Number(y) === y ? Number(y) : this.vec[1]; return this; }
   setZ(z) { this.vec[2] = Number(z) === z ? Number(z) : this.vec[2]; return this; }
   setXYZ(x,y,z) { return this.setX(x).setY(y).setZ(z); }
-  set(vec) { return this.setXYZ(vec.getX(), vec.getY(), vec.getZ()); }
+  copy(vec) { return this.setXYZ(vec.getX(), vec.getY(), vec.getZ()); }
+  clone() { return new V3(this.getX(), this.getY(), this.getZ()); }
   addX(x) { return this.setX(this.getX() + x); }
   addY(y) { return this.setY(this.getY() + y); }
   addZ(z) { return this.setZ(this.getZ() + z); }
