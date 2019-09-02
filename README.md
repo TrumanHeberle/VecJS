@@ -1,4 +1,5 @@
 <p align="center"><img width="500" src="/resources/l1.png" href=""></p>
+
 This library provides a powerful, lightweight utility for vector operations. Vector operations are chainable meaning increased readability and reduced code length. Furthermore, vectors are transferable (see [here](https://developers.google.com/web/updates/2011/12/Transferable-Objects-Lightning-Fast) for details) since the vectors utilize array buffers.
 
 ## Creating Vectors
