@@ -35,9 +35,14 @@ vector.mulY(2);
 
 Here is a list of all supported vector operations:
 
-| Operation | Usage |
+| Operation | Description |
 | --- | :--- |
-| [setX](#setting-components) | na |
+| [setX](#setting-components) | sets the x component of a vector |
+| [setY](#setting-components) | sets the y component of a vector |
+| [setZ](#setting-components) | sets the z component of a vector |
+| [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
+| [copy](#copying-vectors) | copies the values of one vector into another |
+| [clone](#copying-vectors) | creates a new vector with the same values as another |
 
 ### Setting Components
 ```javascript
