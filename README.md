@@ -34,8 +34,9 @@ vector.mulY(2);
 ```
 
 Here is a list of all supported vector operations:
+
 | Operation | Usage |
-| --------- | ----- |
+| --- | :--- |
 | [setX](#setting-components) | na |
 
 ### Setting Components
