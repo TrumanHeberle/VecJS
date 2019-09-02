@@ -34,13 +34,12 @@ vector.addX(1);
 vector.mulY(2);
 ```
 
-Operations will alter and return a reference to the vector being operated. Consider this example:
+Operations will alter and return a reference to the vector being operated on. Consider this example:
 
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
 var vector2 = vector1.mulY(2);
-// vector1: (x: 0, y: 2, z: 2)
-// vector2: (x: 0, y: 2, z: 2)
+// vector1: (x: 0, y: 2, z: 2) ... vector2: (x: 0, y: 2, z: 2)
 ```
 
 After running this code both vectors will now reference the same components meaning further alterations to one will result in both vectors being changed. However, prefacing operations with the word get will result in the operation altering and returning a reference to a new vector instead. Consider this example:
@@ -48,13 +47,10 @@ After running this code both vectors will now reference the same components mean
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
 var vector2 = vector1.getMulY(2);
-// vector1: (x: 0, y: 1, z: 2)
-// vector2: (x: 0, y: 2, z: 2)
+// vector1: (x: 0, y: 1, z: 2) ... vector2: (x: 0, y: 2, z: 2)
 ```
 
-After running this code each vector has separate component references and vector1 remains unaltered.
-
-For documentation and examples, here is a list of all supported vector operations:
+After running this code each vector has separate component references and vector1 remains unaltered. For documentation and examples, here is a list of all supported vector operations:
 
 | Operation | Description |
 | --- | :--- |
