@@ -33,9 +33,9 @@ vector.addX(1);
 vector.mulY(2);
 ```
 
-[setX](#setX)
+[setX](#setting-components)
 
-### [Setting Components](#setX)
+### Setting Components
 ```javascript
 var vector = new Vec.V3(0,1,2);
 vector.setX(1); // sets the x component value to 1
