@@ -33,7 +33,10 @@ vector.addX(1);
 vector.mulY(2);
 ```
 
-[setX](#setting-components)
+Here is a list of all supported vector operations:
+| Operation | Usage |
+| --------- | ----- |
+| [setX](#setting-components) | na |
 
 ### Setting Components
 ```javascript
