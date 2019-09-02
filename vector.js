@@ -22,6 +22,7 @@ class V3 {
   copy(vec) { return this.setXYZ(vec.getX(), vec.getY(), vec.getZ()); }
   clone() { return new V3(this.getX(), this.getY(), this.getZ()); }
   addX(x) { return this.setX(this.getX() + x); }
+  getAddX(x) { return this.clone().addX(x); }
   addY(y) { return this.setY(this.getY() + y); }
   addZ(z) { return this.setZ(this.getZ() + z); }
   addXYZ(x,y,z) { return this.addX(x).addY(y).addZ(z); }
