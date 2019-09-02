@@ -33,6 +33,8 @@ vector.addX(1);
 vector.mulY(2);
 ```
 
+[setX](#setX)
+
 ### Setting Components
 ```javascript
 var vector = new Vec.V3(0,1,2);
@@ -58,3 +60,9 @@ var vector2 = vector1.clone();
 ```
 
 The difference between the copy and clone methods is that copying reuses an existing vector reference while cloning creates an entirely new vector. If possible, copying is preferred over cloning since it reduces memory usage and [garbage collection](https://javascript.info/garbage-collection) by reusing references.
+
+### Vector Addition
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(0,1,2);
+```
