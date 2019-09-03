@@ -82,6 +82,11 @@ After running this code each vector has separate component references and vector
 | [addZ](#vector-addition)<br>[getAddZ](#vector-addition) | adds a constant to the z component of a vector |
 | [addXYZ](#vector-addition)<br>[getAddXYZ](#vector-addition) | adds a constant to the x, y, and z component of a vector |
 | [add](#vector-addition)<br>[getAdd](#vector-addition) | adds the components of one vector to the components of another |
+| [subX](#vector-subtraction)<br>[getSubX](#vector-subtraction) | subtracts a constant from the x component of a vector |
+| [subY](#vector-subtraction)<br>[getSubY](#vector-subtraction) | subtracts a constant from the y component of a vector |
+| [subZ](#vector-subtraction)<br>[getSubZ](#vector-subtraction) | subtracts a constant from the z component of a vector |
+| [subXYZ](#vector-subtraction)<br>[getSubXYZ](#vector-subtraction) | subtracts a constant from the x, y, and z component of a vector |
+| [sub](#vector-subtraction)<br>[getSub](#vector-subtraction) | subtracts the components of one vector from the components of another |
 
 ### Setting Components
 ```javascript
@@ -114,3 +119,11 @@ The difference between the copy and clone methods is that copying reuses an exis
 var vector1 = new Vec.V3(0,1,2);
 var vector2 = new Vec.V3(0,1,2);
 ```
+
+### Vector Subtraction
+
+### Vector Multiplication
+
+### Vector Division
+
+### Vector Normalization
