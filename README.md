@@ -77,7 +77,7 @@ After running this code each vector has separate component references and vector
 | [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
 | [copy](#copying-vectors) | copies the values of one vector into another |
 | [clone](#copying-vectors) | creates a new vector with the same values as another |
-| [addX\ngetAddX()](#vector-addition) | adds a constant to the x component of a vector |
+| [addX<br>getAddX()](#vector-addition) | adds a constant to the x component of a vector |
 | [addY](#vector-addition) | adds a constant to the y component of a vector |
 | [addZ](#vector-addition) | adds a constant to the z component of a vector |
 | [addXYZ](#vector-addition) | adds a constant to the x, y, and z component of a vector |
