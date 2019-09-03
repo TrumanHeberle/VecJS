@@ -77,16 +77,29 @@ After running this code each vector has separate component references and vector
 | [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
 | [copy](#copying-vectors) | copies the values of one vector into another |
 | [clone](#copying-vectors) | creates a new vector with the same values as another |
-| [addX](#vector-addition)<br>[getAddX](#vector-addition) | adds a constant to the x component of a vector |
-| [addY](#vector-addition)<br>[getAddY](#vector-addition) | adds a constant to the y component of a vector |
-| [addZ](#vector-addition)<br>[getAddZ](#vector-addition) | adds a constant to the z component of a vector |
-| [addXYZ](#vector-addition)<br>[getAddXYZ](#vector-addition) | adds a constant to the x, y, and z component of a vector |
-| [add](#vector-addition)<br>[getAdd](#vector-addition) | adds the components of one vector to the components of another |
-| [subX](#vector-subtraction)<br>[getSubX](#vector-subtraction) | subtracts a constant from the x component of a vector |
-| [subY](#vector-subtraction)<br>[getSubY](#vector-subtraction) | subtracts a constant from the y component of a vector |
-| [subZ](#vector-subtraction)<br>[getSubZ](#vector-subtraction) | subtracts a constant from the z component of a vector |
-| [subXYZ](#vector-subtraction)<br>[getSubXYZ](#vector-subtraction) | subtracts a constant from the x, y, and z component of a vector |
-| [sub](#vector-subtraction)<br>[getSub](#vector-subtraction) | subtracts the components of one vector from the components of another |
+| [addX](#vector-addition) | adds a constant to the x component of a vector |
+| [addY](#vector-addition) | adds a constant to the y component of a vector |
+| [addZ](#vector-addition) | adds a constant to the z component of a vector |
+| [addXYZ](#vector-addition) | adds a constant to the x, y, and z components of a vector |
+| [add](#vector-addition) | adds the components of one vector to the components of another |
+| [subX](#vector-subtraction) | subtracts a constant from the x component of a vector |
+| [subY](#vector-subtraction) | subtracts a constant from the y component of a vector |
+| [subZ](#vector-subtraction) | subtracts a constant from the z component of a vector |
+| [subXYZ](#vector-subtraction) | subtracts a constant from the x, y, and z components of a vector |
+| [sub](#vector-subtraction) | subtracts the components of one vector from the components of another |
+| [mulX](#vector-multiplication) | multiplies the x component of a vector by a constant |
+| [mulY](#vector-multiplication) | multiplies the y component of a vector by a constant |
+| [mulZ](#vector-multiplication) | multiplies the z component of a vector by a constant |
+| [mulXYZ](#vector-multiplication) | multiplies the x, y, and z components of a vector by a constant |
+| [mul](#vector-multiplication) | multiplies the components of one vector by the respective components of another |
+| [scale](#vector-multiplication) | multiplies the x, y, and z components of a vector by the same constant |
+| [scaleTo](#vector-multiplication) | scales a vector such that the magnitude is equal to a constant |
+| [divX](#vector-division) | divides the x component of a vector by a constant |
+| [divY](#vector-division) | divides the y component of a vector by a constant |
+| [divZ](#vector-division) | divides the z component of a vector by a constant |
+| [divXYZ](#vector-division) | divides the x, y, and z components of a vector by a constant |
+| [div](#vector-division) | divides the components of one vector by the respective components of another |
+| [normalize](#vector-normalization) | normalizes a vector |
 
 ### Setting Components
 ```javascript
