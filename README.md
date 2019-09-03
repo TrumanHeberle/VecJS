@@ -71,11 +71,11 @@ After running this code each vector has separate component references and vector
 
 | Operation | Mathematical Notation | Description |
 | --- | :--- | :--- |
-| [setX(c)](#setting-components) | h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x v{x,y,z} -> v{c,y,z} | sets the x component of a vector |
-| [setY(c)](#setting-components) | v{x,y,z} -> v{x,c,z} | sets the y component of a vector |
-| [setZ(c)](#setting-components) | | sets the z component of a vector |
-| [setXYZ](#setting-components) | | sets the x, y, and z components of a vector |
-| [copy](#copying-vectors) | | copies the values of one vector into another |
+| [setX(c)](#setting-components) | v{x,y,z} &#8594; v{c,y,z} | sets the x component of a vector |
+| [setY(c)](#setting-components) | v{x,y,z} &#8594; v{x,c,z} | sets the y component of a vector |
+| [setZ(c)](#setting-components) | v{x,y,z} &#8594; v{x,y,c} | sets the z component of a vector |
+| [setXYZ(a,b,c)](#setting-components) | v{x,y,z} &#8594; v{a,b,c} | sets the x, y, and z components of a vector |
+| [copy(vec)](#copying-vectors) | v{x,y,z} &#8594; v{vec<sub>x</sub>,vec<sub>y</sub>,vec<sub>z</sub>} | copies the values of one vector into another |
 | [clone](#copying-vectors) | | creates a new vector with the same values as another |
 | [addX](#vector-addition) | | adds a constant to the x component of a vector |
 | [addY](#vector-addition) | | adds a constant to the y component of a vector |
