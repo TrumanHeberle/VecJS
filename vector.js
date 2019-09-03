@@ -6,22 +6,24 @@ class V3 {
   Y() { return this.vec[1]; }
   Z() { return this.vec[2]; }
   getBuffer() { return this.vec.buffer; }
+  toString() { return "(x: "+this.vec[0]+", y: "+this.vec[1]+", z: "+this.vec[2] + ")"; }
+
   setX(x) { this.vec[0]=x; return this; }
   setY(y) { this.vec[1]=y; return this; }
   setZ(z) { this.vec[2]=z; return this; }
-  toString() { return "(x: "+this.vec[0]+", y: "+this.vec[1]+", z: "+this.vec[2] + ")"; }
   setXYZ(x,y,z) { this.vec[0]=x; this.vec[1]=y; this.vec[2]=z; return this; }
   copy(vec) { this.vec[0]=vec.vec[0]; this.vec[1]=vec.vec[1]; this.vec[2]=vec.vec[2]; return this; }
   clone() { return new V3(this.vec[0], this.vec[1], this.vec[2]); }
+
   addX(x) { this.vec[0]+=x; return this; }
-  getAddX(x) { return new V3(this.vec[0]+x, this.vec[1], this.vec[2]); }
   addY(y) { this.vec[1]+=y; return this; }
-  getAddY(y) { return new V3(this.vec[0], this.vec[1]+y, this.vec[2]); }
   addZ(z) { this.vec[2]+=z; return this; }
-  getAddZ(z) { return new V3(this.vec[0], this.vec[1], this.vec[2]+z); }
   addXYZ(x,y,z) { this.vec[0]+=x; this.vec[1]+=y; this.vec[2]+=z; return this; }
-  getAddXYZ(x,y,z) { return new V3(this.vec[0]+x, this.vec[1]+y, this.vec[2]+z); }
   add(vec) { this.vec[0]+=vec.vec[0]; this.vec[1]+=vec.vec[1]; this.vec[2]+=vec.vec[2]; return this; }
+  getAddX(x) { return new V3(this.vec[0]+x, this.vec[1], this.vec[2]); }
+  getAddY(y) { return new V3(this.vec[0], this.vec[1]+y, this.vec[2]); }
+  getAddZ(z) { return new V3(this.vec[0], this.vec[1], this.vec[2]+z); }
+  getAddXYZ(x,y,z) { return new V3(this.vec[0]+x, this.vec[1]+y, this.vec[2]+z); }
   getAdd(vec) { return new V3(this.vec[0]+vec.vec[0], this.vec[1]+vec.vec[1], this.vec[2]+vec.vec[2]); }
   subX(x) { this.vec[0]-=x; return this; }
   getSubX(x) { return new V3(this.vec[0]-x, this.vec[1], this.vec[2]); }

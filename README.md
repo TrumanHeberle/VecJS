@@ -69,19 +69,20 @@ var vector2 = vector1.getMulY(2);
 
 After running this code each vector has separate component references and vector1 remains unaltered. For documentation and examples, here is a list of all supported vector operations:
 
-| Operation | Mathematical Notation | Description |
-| --- | :--- | :--- |
-| [setX(c)](#setting-components) | v{x,y,z} &#8594; v{c,y,z} | sets the x component of a vector |
-| [setY(c)](#setting-components) | v{x,y,z} &#8594; v{x,c,z} | sets the y component of a vector |
-| [setZ(c)](#setting-components) | v{x,y,z} &#8594; v{x,y,c} | sets the z component of a vector |
-| [setXYZ(a,b,c)](#setting-components) | v{x,y,z} &#8594; v{a,b,c} | sets the x, y, and z components of a vector |
-| [copy(vec)](#copying-vectors) | v{x,y,z} &#8594; v{vec<sub>x</sub>,vec<sub>y</sub>,vec<sub>z</sub>} | copies the values of one vector into another |
-| [clone](#copying-vectors) | | creates a new vector with the same values as another |
-| [addX](#vector-addition) | | adds a constant to the x component of a vector |
-| [addY](#vector-addition) | | adds a constant to the y component of a vector |
-| [addZ](#vector-addition) | | adds a constant to the z component of a vector |
-| [addXYZ](#vector-addition) | | adds a constant to the x, y, and z component of a vector |
-| [add](#vector-addition) | | adds the components of one vector to the components of another |
+| Operation | Functions |
+| --- | :--- |
+| Vector Manipulation | [setX(x)](#setting-components) |
+| [setX(x)](#setting-components) | sets the x component of a vector |
+| [setY(y)](#setting-components) | sets the y component of a vector |
+| [setZ(z)](#setting-components) | sets the z component of a vector |
+| [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
+| [copy](#copying-vectors) | copies the values of one vector into another |
+| [clone](#copying-vectors) | creates a new vector with the same values as another |
+| [addX](#vector-addition) | adds a constant to the x component of a vector |
+| [addY](#vector-addition) | adds a constant to the y component of a vector |
+| [addZ](#vector-addition) | adds a constant to the z component of a vector |
+| [addXYZ](#vector-addition) | adds a constant to the x, y, and z component of a vector |
+| [add](#vector-addition) | adds the components of one vector to the components of another |
 
 ### Setting Components
 ```javascript
