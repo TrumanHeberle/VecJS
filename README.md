@@ -71,7 +71,7 @@ After running this code each vector has separate component references and vector
 
 | Operation | Mathematical Notation | Description |
 | --- | :--- | :--- |
-| [setX(c)](#setting-components) | v{x,y,z} -> v{c,y,z} | sets the x component of a vector |
+| [setX(c)](#setting-components) | h<sub>&theta;</sub>(x) = &theta;<sub>o</sub> x + &theta;<sub>1</sub>x v{x,y,z} -> v{c,y,z} | sets the x component of a vector |
 | [setY(c)](#setting-components) | v{x,y,z} -> v{x,c,z} | sets the y component of a vector |
 | [setZ(c)](#setting-components) | | sets the z component of a vector |
 | [setXYZ](#setting-components) | | sets the x, y, and z components of a vector |
