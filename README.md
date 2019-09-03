@@ -71,7 +71,12 @@ After running this code each vector has separate component references and vector
 
 | Operation | Description |
 | --- | :--- |
-| [setX(x)](#setting-components) | ```math``` |
+| [setX(x)](#setting-components)
+|
+```math
+test
+```
+|
 | [setY(y)](#setting-components) | sets the y component of a vector |
 | [setZ(z)](#setting-components) | sets the z component of a vector |
 | [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
