@@ -60,9 +60,19 @@ class V3 {
   magnitude() { return Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
   normalize() { const m=Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); if (m > 0) { this.vec[0]/=m; this.vec[1]/=m; this.vec[2]/=m; } return this; }
   getNormalize() { const m=Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); if (m > 0) { return new V3(this.vec[0]/m, this.vec[1]/m, this.vec[2]/m); } else { return new V3(0,0,0); } }
-  unitX() { return vec[0] === 0 ? 0 : vec[0]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
-  unitY() { return vec[1] === 0 ? 0 : vec[1]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
-  unitZ() { return vec[2] === 0 ? 0 : vec[2]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
+  unitX() { return this.vec[0] === 0 ? 0 : this.vec[0]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
+  unitY() { return this.vec[1] === 0 ? 0 : this.vec[1]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
+  unitZ() { return this.vec[2] === 0 ? 0 : this.vec[2]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
+  dot(vec) { return this.vec[0]*vec.vec[0] + this.vec[1]*vec.vec[1] + this.vec[2]*vec.vec[2]; }
+  cross(vec) { const x=this.vec[1]*vec.vec[2] - this.vec[2]*vec.vec[1]; const y=this.vec[2]*vec.vec[0] - this.vec[0]*vec.vec[2]; this.vec[2] = this.vec[0]*vec.vec[1] - this.vec[1]*vec.vec[0]; this.vec[0] = x; this.vec[1] = y; return this; }
+  getCross(vec) { return new V3(this.vec[1]*vec.vec[2] - this.vec[2]*vec.vec[1], this.vec[2]*vec.vec[0] - this.vec[0]*vec.vec[2], this.vec[0]*vec.vec[1] - this.vec[1]*vec.vec[0]); }
+
+  angleBetween(vec) { return this; }
+  distanceTo(vec) { return this; }
+  eulerRotateX(ax) { return this; }
+  eulerRotateY(ay) { return this; }
+  eulerRotateZ(az) { return this; }
+  axialRotate(vec, angle) { return this; }
 }
 
 window.Vec = { V3: V3 }

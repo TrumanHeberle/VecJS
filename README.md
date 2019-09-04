@@ -82,8 +82,8 @@ After running this code each vector has separate component references and vector
 | [unitX](#vector-normalization) | gets the normalized x component of a vector |
 | [unitY](#vector-normalization) | gets the normalized y component of a vector |
 | [unitZ](#vector-normalization) | gets the normalized z component of a vector |
-| [dot](#vector-products) |  |
-| [cross](#vector-products) |  |
+| [dot](#vector-products) | gets the dot product of two vectors |
+| [cross](#vector-products) | performs the cross product on a vector on another vector |
 
 ### Getting Components
 ```javascript
@@ -150,13 +150,73 @@ var vector7 = vector1.getSub(vector2); // creates a new vector with the componen
 ```
 
 ### Vector Multiplication
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(0,1,2);
+vector1.mulX(2); // multiplies the x component by 2
+vector1.mulY(2); // multiplies the y component by 2
+vector1.mulZ(2); // multiplies the z component by 2
+vector1.mulXYZ(2,3,4); // multiplies the x, y, and z components by 2, 3, and 4 respectfully
+vector1.mul(vector2); // multiplies the components of vector1 by the components of vector2 respectfully
+vector1.scale(2); // multiplies each component by 2
+vector1.scaleTo(2); // multiplies each component such that the magnitude is 2
+var vector3 = vector1.getMulX(2); // creates a new vector with the x component multiplied by 2
+var vector4 = vector1.getMulY(2); // creates a new vector with the y component multiplied by 2
+var vector5 = vector1.getMulZ(2); // creates a new vector with the z component multiplied by 2
+var vector6 = vector1.getMulXYZ(2,3,4); // creates a new vector with the x, y, and z components multiplied by 2, 3, and 4 respectfully
+var vector7 = vector1.getMul(vector2); // creates a new vector with the components of vector1 multiplied by the components of vector1 respectfully
+var vector8 = vector1.getScale(2); // creates a new vector with each component multiplied by 2
+var vector9 = vector1.getScaleTo(2); // creates a new vector with each component multiplied such that the magnitude is 2
+```
 
 ### Vector Division
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(0,1,2);
+vector1.divX(2); // divides the x component by 2
+vector1.divY(2); // divides the y component by 2
+vector1.divZ(2); // divides the z component by 2
+vector1.divXYZ(2,3,4); // divides the x, y, and z components by 2, 3, and 4 respectfully
+vector1.div(vector2); // divides the components of vector1 by the components of vector2 respectfully
+var vector3 = vector1.getDivX(2); // creates a new vector with the x component divided by 2
+var vector4 = vector1.getDivY(2); // creates a new vector with the y component divided by 2
+var vector5 = vector1.getDivZ(2); // creates a new vector with the z component divided by 2
+var vector6 = vector1.getDivXYZ(2,3,4); // creates a new vector with the x, y, and z components divided by 2, 3, and 4 respectfully
+var vector7 = vector1.getDiv(vector2); // creates a new vector with the components of vector1 divided by the components of vector1 respectfully
+```
 
 ### Vector Normalization
 ```javascript
-var vector = new Vec.V3(0,1,1);
+var vector1 = new Vec.V3(0,1,1);
+vector1.normalize(); // normalizes the vector
+var vector2 = vector1.getNormalize(); // creates a new vector that is the normalized vector of vector1
+```
+
+If computing each normalized component is not necessary, a single normalized component can be calculated independently instead.
+
+```javascript
+var vector3 = new Vec.V3(0,5,5);
 console.log(vector.unitX(), vector.unitY(), vector.unitZ()); // logs "0 1.414 1.414"
+// vector3 remains unchanged by these operations
 ```
 
 ### Vector Products
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(3,5,7);
+console.log(vector1.dot(vector2), vector2.dot(vector1));
+// logs "19 19"
+```
+
+The dot product is commutative so order does not matter.
+
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(3,5,7);
+console.log(vector1.getCross(vector2).toString(), vector2.getCross(vector1).toString());
+// logs "(x: -3, y: 6, z: -3) (x: 3, y: -6, z: 3)"
+
+vector1.cross(vector2); // sets vector1 to the result of the cross product of vector1 on vector2
+```
+
+The cross product is not commutative so order does matter.
