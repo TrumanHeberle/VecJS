@@ -84,11 +84,13 @@ After running this code each vector has separate component references and vector
 | [unitZ](#vector-normalization) | gets the normalized z component of a vector |
 | [dot](#vector-products) | gets the dot product of two vectors |
 | [cross](#vector-products) | performs the cross product on a vector on another vector |
+| [magnitude](#vector-magnitude) | gets the magnitude of a vector |
+| [distanceTo](#vector-magnitude) | gets the magnitude of the distance between two vectors |
 
 ### Getting Components
 ```javascript
 var vector = new Vec.V3(0,1,2);
-console.log(vector.getX(), vector.getY(), vector.getZ()); // logs: "0 1 2"
+console.log(vector.X(), vector.Y(), vector.Z()); // logs: "0 1 2"
 ```
 
 ### Setting Components
@@ -189,7 +191,7 @@ var vector7 = vector1.getDiv(vector2); // creates a new vector with the componen
 ```javascript
 var vector1 = new Vec.V3(0,1,1);
 vector1.normalize(); // normalizes the vector
-var vector2 = vector1.getNormalize(); // creates a new vector that is the normalized vector of vector1
+var vector2 = vector1.getNormalize(); // creates a new vector that is equivalent to vector1 normalized
 ```
 
 If computing each normalized component is not necessary, a single normalized component can be calculated independently instead.
@@ -220,3 +222,12 @@ vector1.cross(vector2); // sets vector1 to the result of the cross product of ve
 ```
 
 The cross product is not commutative so order does matter.
+
+### Vector Magnitude
+```javascript
+var vector1 = new Vec.V3(0,1,3);
+console.log(vector1.magnitude()); // logs "2"
+
+var vector2 = new Vec.V3(0,-1,-3);
+console.log(vector1.distanceTo(vector2)); // logs "4"
+```
