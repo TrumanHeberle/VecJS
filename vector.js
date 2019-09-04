@@ -64,6 +64,7 @@ class V3 {
   getDiv(vec) { return new V3(this.vec[0]/vec.vec[0], this.vec[1]/vec.vec[1], this.vec[2]/vec.vec[2]); }
   normalize() { const m=Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); if (m > 0) { this.vec[0]/=m; this.vec[1]/=m; this.vec[2]/=m; } return this; }
   getNormalize() { const m=Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); if (m > 0) { return new V3(this.vec[0]/m, this.vec[1]/m, this.vec[2]/m); } else { return new V3(0,0,0); } }
+  
 }
 
 window.Vec = { V3: V3 }

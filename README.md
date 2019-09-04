@@ -12,30 +12,6 @@ var vector3 = new Vec.V3(); // (x: 0, y: 0, z: 0)
 var vector4 = new Vec.V3("this", "is", "invalid"); // (x: 0, y: 0, z: 0)
 ```
 
-## Getters
-There is a set of functions built in to easily retrieve common information about a vector. Here is the full list of getter methods:
-
-| Getter | Description |
-| --- | :--- |
-| [X](#getting-components) | gets the x component of a vector |
-| [Y](#getting-components) | gets the y component of a vector |
-| [Z](#getting-components) | gets the z component of a vector |
-| [unitX](#getting-unitized-components) | gets the normalized x component of a vector |
-| [unitY](#getting-unitized-components) | gets the normalized y component of a vector |
-| [unitZ](#getting-unitized-components) | gets the normalized z component of a vector |
-
-### Getting Components
-```javascript
-var vector = new Vec.V3(0,1,2);
-console.log(vector.getX(), vector.getY(), vector.getZ()); // logs: "0 1 2"
-```
-
-### Getting Unitized Components
-```javascript
-var vector = new Vec.V3(0,1,1);
-console.log(vector.unitX(), vector.unitY(), vector.unitZ()); // logs "0 1.414 1.414"
-```
-
 ## Supported Operations
 There is also a set of functions built in to easily execute common vector operations. All vector operations are chainable, hence
 
@@ -71,6 +47,9 @@ After running this code each vector has separate component references and vector
 
 | Operation | Description |
 | --- | :--- |
+| [X](#getting-components) | gets the x component of a vector |
+| [Y](#getting-components) | gets the y component of a vector |
+| [Z](#getting-components) | gets the z component of a vector |
 | [setX(x)](#setting-components) | sets the x component of a vector |
 | [setY(y)](#setting-components) | sets the y component of a vector |
 | [setZ(z)](#setting-components) | sets the z component of a vector |
@@ -100,6 +79,17 @@ After running this code each vector has separate component references and vector
 | [divXYZ](#vector-division) | divides the x, y, and z components of a vector by a constant |
 | [div](#vector-division) | divides the components of one vector by the respective components of another |
 | [normalize](#vector-normalization) | normalizes a vector |
+| [unitX](#vector-normalization) | gets the normalized x component of a vector |
+| [unitY](#vector-normalization) | gets the normalized y component of a vector |
+| [unitZ](#vector-normalization) | gets the normalized z component of a vector |
+| [dot](#vector-products) |  |
+| [cross](#vector-products) |  |
+
+### Getting Components
+```javascript
+var vector = new Vec.V3(0,1,2);
+console.log(vector.getX(), vector.getY(), vector.getZ()); // logs: "0 1 2"
+```
 
 ### Setting Components
 ```javascript
@@ -140,3 +130,9 @@ var vector2 = new Vec.V3(0,1,2);
 ### Vector Division
 
 ### Vector Normalization
+```javascript
+var vector = new Vec.V3(0,1,1);
+console.log(vector.unitX(), vector.unitY(), vector.unitZ()); // logs "0 1.414 1.414"
+```
+
+### Vector Products
