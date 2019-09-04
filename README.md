@@ -50,9 +50,9 @@ After running this code each vector has separate component references and vector
 | [X](#getting-components) | gets the x component of a vector |
 | [Y](#getting-components) | gets the y component of a vector |
 | [Z](#getting-components) | gets the z component of a vector |
-| [setX(x)](#setting-components) | sets the x component of a vector |
-| [setY(y)](#setting-components) | sets the y component of a vector |
-| [setZ(z)](#setting-components) | sets the z component of a vector |
+| [setX](#setting-components) | sets the x component of a vector |
+| [setY](#setting-components) | sets the y component of a vector |
+| [setZ](#setting-components) | sets the z component of a vector |
 | [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
 | [copy](#copying-vectors) | copies the values of one vector into another |
 | [clone](#copying-vectors) | creates a new vector with the same values as another |
@@ -121,9 +121,33 @@ The difference between the copy and clone methods is that copying reuses an exis
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
 var vector2 = new Vec.V3(0,1,2);
+vector1.addX(1); // adds 1 to the x component
+vector1.addY(1); // adds 1 to the y component
+vector1.addZ(1); // adds 1 to the z component
+vector1.addXYZ(1,2,3); // adds 1, 2, and 3 to the x, y, and z components respectfully
+vector1.add(vector2); // adds the components of vector2 to vector1
+var vector3 = vector1.getAddX(1); // creates a new vector with 1 added to the x component
+var vector4 = vector1.getAddY(1); // creates a new vector with 1 added to the x component
+var vector5 = vector1.getAddZ(1); // creates a new vector with 1 added to the x component
+var vector6 = vector1.getAddXYZ(1,2,3); // creates a new vector with 1, 2, and 3 added to the x, y, and z components respectfully
+var vector7 = vector1.getAdd(vector2); // creates a new vector with the components of vector2 added to vector1
 ```
 
 ### Vector Subtraction
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(0,1,2);
+vector1.subX(1); // subtracts 1 from the x component
+vector1.subY(1); // subtracts 1 from the y component
+vector1.subZ(1); // subtracts 1 from the z component
+vector1.subXYZ(1,2,3); // subtracts 1, 2, and 3 from the x, y, and z components respectfully
+vector1.sub(vector2); // subtracts the components of vector2 from vector1
+var vector3 = vector1.getSubX(1); // creates a new vector with 1 subtracted from the x component
+var vector4 = vector1.getSubY(1); // creates a new vector with 1 subtracted from the x component
+var vector5 = vector1.getSubZ(1); // creates a new vector with 1 subtracted from the x component
+var vector6 = vector1.getSubXYZ(1,2,3); // creates a new vector with 1, 2, and 3 subtracted from the x, y, and z components respectfully
+var vector7 = vector1.getSub(vector2); // creates a new vector with the components of vector2 subtracted from vector1
+```
 
 ### Vector Multiplication
 

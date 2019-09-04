@@ -7,11 +7,6 @@ class V3 {
   Z() { return this.vec[2]; }
   getBuffer() { return this.vec.buffer; }
   toString() { return "(x: "+this.vec[0]+", y: "+this.vec[1]+", z: "+this.vec[2] + ")"; }
-  magnitude() { return Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
-  unitX() { return vec[0] === 0 ? 0 : vec[0]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
-  unitY() { return vec[1] === 0 ? 0 : vec[1]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
-  unitZ() { return vec[2] === 0 ? 0 : vec[2]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
-
   setX(x) { this.vec[0]=x; return this; }
   setY(y) { this.vec[1]=y; return this; }
   setZ(z) { this.vec[2]=z; return this; }
@@ -62,9 +57,12 @@ class V3 {
   getDivZ(z) { return new V3(this.vec[0], this.vec[1], this.vec[2]/z); }
   getDivXYZ(x,y,z) { return new V3(this.vec[0]/x, this.vec[1]/y, this.vec[2]/z); }
   getDiv(vec) { return new V3(this.vec[0]/vec.vec[0], this.vec[1]/vec.vec[1], this.vec[2]/vec.vec[2]); }
+  magnitude() { return Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
   normalize() { const m=Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); if (m > 0) { this.vec[0]/=m; this.vec[1]/=m; this.vec[2]/=m; } return this; }
   getNormalize() { const m=Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); if (m > 0) { return new V3(this.vec[0]/m, this.vec[1]/m, this.vec[2]/m); } else { return new V3(0,0,0); } }
-  
+  unitX() { return vec[0] === 0 ? 0 : vec[0]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
+  unitY() { return vec[1] === 0 ? 0 : vec[1]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
+  unitZ() { return vec[2] === 0 ? 0 : vec[2]/Math.sqrt(this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2); }
 }
 
 window.Vec = { V3: V3 }
