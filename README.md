@@ -90,16 +90,16 @@ After running this code each vector has separate component references and vector
 | [cross](#vector-products) | performs the cross product on a vector on another vector |
 | [magnitude](#vector-magnitude) | gets the magnitude of a vector |
 | [distanceTo](#vector-magnitude) | gets the magnitude of the distance between two vectors |
-| [maxX](#vector-clamping) | limits the x component of a vector to a constant maximum |
-| [maxY](#vector-clamping) | limits the y component of a vector to a constant maximum |
-| [maxZ](#vector-clamping) | limits the z component of a vector to a constant maximum |
-| [maxXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant maximum |
-| [max](#vector-clamping) | limits the components of a vector to a maximum of the respective components of another vector |
-| [minX](#vector-clamping) | limits the x component of a vector to a constant minimum |
-| [minY](#vector-clamping) | limits the y component of a vector to a constant minimum |
-| [minZ](#vector-clamping) | limits the z component of a vector to a constant minimum |
-| [minXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant minimum |
-| [min](#vector-clamping) | limits the components of a vector to a minimum of the respective components of another vector |
+| [maxX](#vector-clamping) | sets the x component of a vector to the maximum between the existing value and a constant |
+| [maxY](#vector-clamping) | sets the y component of a vector to the maximum between the existing value and a constant |
+| [maxZ](#vector-clamping) | sets the z component of a vector to the maximum between the existing value and a constant |
+| [maxXYZ](#vector-clamping) | sets the x, y, and z components of a vector to the maximum between the existing value and a constant |
+| [max](#vector-clamping) | sets the components of a vector to the maximum between the existing value and the respective component of another vector |
+| [minX](#vector-clamping) | sets the x component of a vector to the minimum between the existing value and a constant |
+| [minY](#vector-clamping) | sets the y component of a vector to the minimum between the existing value and a constant |
+| [minZ](#vector-clamping) | sets the z component of a vector to the minimum between the existing value and a constant |
+| [minXYZ](#vector-clamping) | sets the x, y, and z components of a vector to the minimum between the existing value and a constant |
+| [min](#vector-clamping) | sets the components of a vector to the minimum between the existing value and the respective component of another vector |
 | [clampX](#vector-clamping) | limits the x component of a vector to a constant maximum and a constant minimum |
 | [clampY](#vector-clamping) | limits the y component of a vector to a constant maximum and a constant minimum |
 | [clampZ](#vector-clamping) | limits the z component of a vector to a constant maximum and a constant minimum |
@@ -150,11 +150,6 @@ vector1.addY(1); // adds 1 to the y component
 vector1.addZ(1); // adds 1 to the z component
 vector1.addXYZ(1,2,3); // adds 1, 2, and 3 to the x, y, and z components respectfully
 vector1.add(vector2); // adds the components of vector2 to vector1
-var vector3 = vector1.getAddX(1); // creates a new vector with 1 added to the x component
-var vector4 = vector1.getAddY(1); // creates a new vector with 1 added to the x component
-var vector5 = vector1.getAddZ(1); // creates a new vector with 1 added to the x component
-var vector6 = vector1.getAddXYZ(1,2,3); // creates a new vector with 1, 2, and 3 added to the x, y, and z components respectfully
-var vector7 = vector1.getAdd(vector2); // creates a new vector with the components of vector2 added to vector1
 ```
 
 ### Vector Subtraction
@@ -166,11 +161,6 @@ vector1.subY(1); // subtracts 1 from the y component
 vector1.subZ(1); // subtracts 1 from the z component
 vector1.subXYZ(1,2,3); // subtracts 1, 2, and 3 from the x, y, and z components respectfully
 vector1.sub(vector2); // subtracts the components of vector2 from vector1
-var vector3 = vector1.getSubX(1); // creates a new vector with 1 subtracted from the x component
-var vector4 = vector1.getSubY(1); // creates a new vector with 1 subtracted from the x component
-var vector5 = vector1.getSubZ(1); // creates a new vector with 1 subtracted from the x component
-var vector6 = vector1.getSubXYZ(1,2,3); // creates a new vector with 1, 2, and 3 subtracted from the x, y, and z components respectfully
-var vector7 = vector1.getSub(vector2); // creates a new vector with the components of vector2 subtracted from vector1
 ```
 
 ### Vector Multiplication
@@ -188,17 +178,6 @@ vector1.invertZ(); // multiplies the z component by -1
 vector1.invertXYZ(); // multiplies the x, y, and z components by -1
 vector1.scale(2); // multiplies each component by 2
 vector1.scaleTo(2); // multiplies each component such that the magnitude is 2
-var vector3 = vector1.getMulX(2); // creates a new vector with the x component multiplied by 2
-var vector4 = vector1.getMulY(2); // creates a new vector with the y component multiplied by 2
-var vector5 = vector1.getMulZ(2); // creates a new vector with the z component multiplied by 2
-var vector6 = vector1.getMulXYZ(2,3,4); // creates a new vector with the x, y, and z components multiplied by 2, 3, and 4 respectfully
-var vector7 = vector1.getMul(vector2); // creates a new vector with the components of vector1 multiplied by the components of vector1 respectfully
-var vector8 = vector1.getInvertX(); // creates a new vector with the x component multiplied by -1
-var vector9 = vector1.getInvertY(); // creates a new vector with the x component multiplied by -1
-var vector10 = vector1.getInvertZ(); // creates a new vector with the x component multiplied by -1
-var vector11 = vector1.getInvertXYZ(); // creates a new vector with the x component multiplied by -1
-var vector12 = vector1.getScale(2); // creates a new vector with each component multiplied by 2
-var vector13 = vector1.getScaleTo(2); // creates a new vector with each component multiplied such that the magnitude is 2
 ```
 
 ### Vector Division
@@ -210,18 +189,12 @@ vector1.divY(2); // divides the y component by 2
 vector1.divZ(2); // divides the z component by 2
 vector1.divXYZ(2,3,4); // divides the x, y, and z components by 2, 3, and 4 respectfully
 vector1.div(vector2); // divides the components of vector1 by the components of vector2 respectfully
-var vector3 = vector1.getDivX(2); // creates a new vector with the x component divided by 2
-var vector4 = vector1.getDivY(2); // creates a new vector with the y component divided by 2
-var vector5 = vector1.getDivZ(2); // creates a new vector with the z component divided by 2
-var vector6 = vector1.getDivXYZ(2,3,4); // creates a new vector with the x, y, and z components divided by 2, 3, and 4 respectfully
-var vector7 = vector1.getDiv(vector2); // creates a new vector with the components of vector1 divided by the components of vector1 respectfully
 ```
 
 ### Vector Normalization
 ```javascript
 var vector1 = new Vec.V3(0,1,1);
 vector1.normalize(); // normalizes the vector
-var vector2 = vector1.getNormalize(); // creates a new vector that is equivalent to vector1 normalized
 ```
 
 If computing each normalized component is not necessary, a single normalized component can be calculated independently instead.
@@ -233,6 +206,8 @@ console.log(vector.unitX(), vector.unitY(), vector.unitZ()); // logs "0 1.414 1.
 ```
 
 ### Vector Products
+The dot product is commutative so order does not matter.
+
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
 var vector2 = new Vec.V3(3,5,7);
@@ -240,18 +215,14 @@ console.log(vector1.dot(vector2), vector2.dot(vector1));
 // logs "19 19"
 ```
 
-The dot product is commutative so order does not matter.
+The cross product is not commutative so order does matter.
 
 ```javascript
 var vector1 = new Vec.V3(0,1,2);
 var vector2 = new Vec.V3(3,5,7);
 console.log(vector1.getCross(vector2).toString(), vector2.getCross(vector1).toString());
 // logs "(x: -3, y: 6, z: -3) (x: 3, y: -6, z: 3)"
-
-vector1.cross(vector2); // sets vector1 to the result of the cross product of vector1 on vector2
 ```
-
-The cross product is not commutative so order does matter.
 
 ### Vector Magnitude
 ```javascript
@@ -263,5 +234,51 @@ console.log(vector1.distanceTo(vector2)); // logs "4"
 ```
 
 ### Vector Clamping
+The max operations set components to the maximum of their current value and a constant
+
+```javascript
+var vector = new Vector(10,10,10);
+vector.maxX(11);
+vector.maxY(12);
+vector.maxZ(13);
+console.log(vector.toString());
+// logs "(x: 11, y: 12, z: 13)"
+
+vector.maxXYZ(10,10,10);
+vector.max(new Vec.V3(10,10,10));
+console.log(vector.toString());
+// logs "(x: 11, y: 12, z: 13)"
+```
+
+The min operations set components to the maximum of their current value and a constant
+
+```javascript
+var vector = new Vector(10,10,10);
+vector.minX(9);
+vector.minY(8);
+vector.minZ(7);
+console.log(vector.toString());
+// logs "(x: 9, y: 8, z: 7)"
+
+vector.minXYZ(10,10,10);
+vector.min(new Vec.V3(10,10,10));
+console.log(vector.toString());
+// logs "(x: 9, y: 8, z: 7)"
+```
+
+The clamp operations define a lower and an upper bound on the components they are used on.
+
+```javascript
+var vector = new Vector(-5,5,0);
+vector.clampX(0,10);
+vector.clampY(-10,2);
+vector.clampZ(5,10);
+console.log(vector.toString());
+// logs "(x: 0, y: 2, z: 5)"
+
+vector.clampXYZ(0,-10,5,10,2,10);
+vector.clamp(new Vec.V3(0,-10,5), new Vec.V3(10,2,10));
+// both of the statments above are equivalent to the individual component clamps applied earlier
+```
 
 ### Vector Projection
