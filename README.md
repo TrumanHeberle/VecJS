@@ -12,6 +12,38 @@ var vector3 = new Vec.V3(); // (x: 0, y: 0, z: 0)
 var vector4 = new Vec.V3("this", "is", "invalid"); // (x: 0, y: 0, z: 0)
 ```
 
+## Vector Properties
+There is a set of properties built in that are designated for easy access to helpful values. Some properties are read only so be careful when setting properties. Consider this example:
+
+```javascript
+var vector = new Vec.V3(0,1,2);
+console.log(vector.isNull); // logs "false"
+vector.isNull = true;
+console.log(vector.isNull); // logs "false"
+```
+
+One useful thing about vector properties is that they are evaluated dynamically, meaning changing one directly will result in the rest being updated as well. Consider this example:
+
+```javascript
+var vector = new Vec.V3(0,1,3);
+console.log(vector.magnitude, vector.x, vector.y, vector.z); // logs "2 0 1 3"
+vector.magnitude *= 2;
+console.log(vector.magnitude, vector.x, vector.y, vector.z); // logs "4 0 2 6"
+```
+
+The full list of read only properties are as follows:
+
+| Property | Description | Permissions |
+| --- | :--- | :--- |
+| [x](#getting-components) | the x component of a vector | Read/Write |
+| [y](#getting-components) | the y component of a vector | Read/Write |
+| [z](#getting-components) | the z component of a vector | Read/Write |
+| [magnitude](#vector-magnitude) | gets the magnitude of a vector | Read/Write |
+| [isNull](#vector-equality) | gets whether a vector is the null vector | Read |
+| [unitX](#vector-normalization) | gets the normalized x component of a vector | Read |
+| [unitY](#vector-normalization) | gets the normalized y component of a vector | Read |
+| [unitZ](#vector-normalization) | gets the normalized z component of a vector | Read |
+
 ## Supported Operations
 There is also a set of functions built in to easily execute common vector operations. All vector operations are chainable, hence
 
@@ -47,15 +79,13 @@ After running this code each vector has separate component references and vector
 
 | Operation | Description |
 | --- | :--- |
-| [X](#getting-components) | gets the x component of a vector |
-| [Y](#getting-components) | gets the y component of a vector |
-| [Z](#getting-components) | gets the z component of a vector |
 | [setX](#setting-components) | sets the x component of a vector |
 | [setY](#setting-components) | sets the y component of a vector |
 | [setZ](#setting-components) | sets the z component of a vector |
 | [setXYZ](#setting-components) | sets the x, y, and z components of a vector |
 | [copy](#copying-vectors) | copies the values of one vector into another |
 | [clone](#copying-vectors) | creates a new vector with the same values as another |
+| [equals](#vector-equality) | gets whether two vectors are equal |
 | [addX](#vector-addition) | adds a constant to the x component of a vector |
 | [addY](#vector-addition) | adds a constant to the y component of a vector |
 | [addZ](#vector-addition) | adds a constant to the z component of a vector |
@@ -83,12 +113,8 @@ After running this code each vector has separate component references and vector
 | [divXYZ](#vector-division) | divides the x, y, and z components of a vector by a constant |
 | [div](#vector-division) | divides the components of one vector by the respective components of another |
 | [normalize](#vector-normalization) | normalizes a vector |
-| [unitX](#vector-normalization) | gets the normalized x component of a vector |
-| [unitY](#vector-normalization) | gets the normalized y component of a vector |
-| [unitZ](#vector-normalization) | gets the normalized z component of a vector |
 | [dot](#vector-products) | gets the dot product of two vectors |
 | [cross](#vector-products) | performs the cross product on a vector on another vector |
-| [magnitude](#vector-magnitude) | gets the magnitude of a vector |
 | [distanceTo](#vector-magnitude) | gets the magnitude of the distance between two vectors |
 | [maxX](#vector-clamping) | sets the x component of a vector to the maximum between the existing value and a constant |
 | [maxY](#vector-clamping) | sets the y component of a vector to the maximum between the existing value and a constant |
@@ -105,14 +131,22 @@ After running this code each vector has separate component references and vector
 | [clampZ](#vector-clamping) | limits the z component of a vector to a constant maximum and a constant minimum |
 | [clampXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant maximum and a constant minimum |
 | [clamp](#vector-clamping) | limits the components of a vector to a minimum and maximum of the respective components of other vectors |
-| [projectLinear](#vector-projection) | projects a vector in the direction of another vector |
+| [projectLinear](#vector-projection) | projects a vector onto a line parallel to another vector |
 | [projectPlanarFromAxis](#vector-projection) | projects a vector onto the surface of a plane defined by two axis vectors |
 | [projectPlanarFromNormal](#vector-projection) | projects a vector onto the surface of a plane defined by a normal vector |
 
 ### Getting Components
 ```javascript
 var vector = new Vec.V3(0,1,2);
-console.log(vector.X(), vector.Y(), vector.Z()); // logs: "0 1 2"
+console.log(vector.x, vector.y, vector.z); // logs: "0 1 2"
+```
+
+Be careful when using getter operations like these, they can not be changed directly since they are created as read only. [(more info)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+
+```javascript
+var vector = new Vec.V3(0,1,2);
+vector.x = 10;
+console.log(vector.x); // logs "0"
 ```
 
 ### Setting Components
@@ -140,6 +174,25 @@ var vector2 = vector1.clone();
 ```
 
 The difference between the copy and clone methods is that copying reuses an existing vector reference while cloning creates an entirely new vector. If possible, copying is preferred over cloning since it reduces memory usage and [garbage collection](https://javascript.info/garbage-collection) by reusing references.
+
+### Vector Equality
+Vectors are considered equal when their respective components are equal.
+
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(0,1,2);
+var vector3 = new Vec.V3(1,1,2);
+console.log(vector1.equals(vector2)); // logs "true"
+console.log(vector1.equals(vector3)); // logs "false"
+```
+
+There is a predefined property for checking whether a vector is the null vector as well.
+
+```javascript
+var vector1 = new Vec.V3(0,1,2);
+var vector2 = new Vec.V3(0,0,0);
+console.log(vector1.isNull, vector2.isNull); // logs "false true"
+```
 
 ### Vector Addition
 ```javascript
@@ -193,16 +246,15 @@ vector1.div(vector2); // divides the components of vector1 by the components of 
 
 ### Vector Normalization
 ```javascript
-var vector1 = new Vec.V3(0,1,1);
-vector1.normalize(); // normalizes the vector
+var vector = new Vec.V3(0,1,1);
+vector.normalize(); // normalizes the vector
 ```
 
 If computing each normalized component is not necessary, a single normalized component can be calculated independently instead.
 
 ```javascript
-var vector3 = new Vec.V3(0,5,5);
-console.log(vector.unitX(), vector.unitY(), vector.unitZ()); // logs "0 1.414 1.414"
-// vector3 remains unchanged by these operations
+var vector = new Vec.V3(0,5,5);
+console.log(vector.unitX, vector.unitY, vector.unitZ); // logs "0 1.414 1.414"
 ```
 
 ### Vector Products
@@ -227,7 +279,7 @@ console.log(vector1.getCross(vector2).toString(), vector2.getCross(vector1).toSt
 ### Vector Magnitude
 ```javascript
 var vector1 = new Vec.V3(0,1,3);
-console.log(vector1.magnitude()); // logs "2"
+console.log(vector1.magnitude); // logs "2"
 
 var vector2 = new Vec.V3(0,-1,-3);
 console.log(vector1.distanceTo(vector2)); // logs "4"
