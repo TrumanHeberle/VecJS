@@ -90,24 +90,24 @@ After running this code each vector has separate component references and vector
 | [cross](#vector-products) | performs the cross product on a vector on another vector |
 | [magnitude](#vector-magnitude) | gets the magnitude of a vector |
 | [distanceTo](#vector-magnitude) | gets the magnitude of the distance between two vectors |
-| [maxX](#vector-clamping) | |
-| [maxY](#vector-clamping) | |
-| [maxZ](#vector-clamping) | |
-| [maxXYZ](#vector-clamping) | |
-| [max](#vector-clamping) | |
-| [minX](#vector-clamping) | |
-| [minY](#vector-clamping) | |
-| [minZ](#vector-clamping) | |
-| [minXYZ](#vector-clamping) | |
-| [min](#vector-clamping) | |
-| [clampX](#vector-clamping) | |
-| [clampY](#vector-clamping) | |
-| [clampZ](#vector-clamping) | |
-| [clampXYZ](#vector-clamping) | |
-| [clamp](#vector-clamping) | |
-| [projectLinear](#vector-projection) | |
-| [projectPlanarFromAxis](#vector-projection) | |
-| [projectPlanarFromNormal](#vector-projection) | |
+| [maxX](#vector-clamping) | limits the x component of a vector to a constant maximum |
+| [maxY](#vector-clamping) | limits the y component of a vector to a constant maximum |
+| [maxZ](#vector-clamping) | limits the z component of a vector to a constant maximum |
+| [maxXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant maximum |
+| [max](#vector-clamping) | limits the components of a vector to a maximum of the respective components of another vector |
+| [minX](#vector-clamping) | limits the x component of a vector to a constant minimum |
+| [minY](#vector-clamping) | limits the y component of a vector to a constant minimum |
+| [minZ](#vector-clamping) | limits the z component of a vector to a constant minimum |
+| [minXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant minimum |
+| [min](#vector-clamping) | limits the components of a vector to a minimum of the respective components of another vector |
+| [clampX](#vector-clamping) | limits the x component of a vector to a constant maximum and a constant minimum |
+| [clampY](#vector-clamping) | limits the y component of a vector to a constant maximum and a constant minimum |
+| [clampZ](#vector-clamping) | limits the z component of a vector to a constant maximum and a constant minimum |
+| [clampXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant maximum and a constant minimum |
+| [clamp](#vector-clamping) | limits the components of a vector to a minimum and maximum of the respective components of other vectors |
+| [projectLinear](#vector-projection) | projects a vector in the direction of another vector |
+| [projectPlanarFromAxis](#vector-projection) | projects a vector onto the surface of a plane defined by two axis vectors |
+| [projectPlanarFromNormal](#vector-projection) | projects a vector onto the surface of a plane defined by a normal vector |
 
 ### Getting Components
 ```javascript

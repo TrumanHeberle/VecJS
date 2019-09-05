@@ -76,7 +76,6 @@ class V3 {
   getCross(vec) { return new V3(this.vec[1]*vec.vec[2] - this.vec[2]*vec.vec[1], this.vec[2]*vec.vec[0] - this.vec[0]*vec.vec[2], this.vec[0]*vec.vec[1] - this.vec[1]*vec.vec[0]); }
   angleBetween(vec) { const tm=this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2; if (tm == 0) { return null; } const vm=vec.vec[0]**2 + vec.vec[1]**2 + vec.vec[2]**2; if (vm == 0) { return null; } return Math.acos((this.vec[0]*vec.vec[0] + this.vec[1]*vec.vec[1] + this.vec[2]*vec.vec[2])/(Math.sqrt(tm)*Math.sqrt(vm))); }
   distanceTo(vec) { return Math.sqrt((this.vec[0]-other.vec[0])**2 + (this.vec[1]-other.vec[1])**2 + (this.vec[2]-other.vec[2])**2); }
-
   maxX(c) { this.vec[0]=Math.max(this.vec[0], c); return this; }
   maxY(c) { this.vec[0]=Math.max(this.vec[0], c); return this; }
   maxZ(c) { this.vec[0]=Math.max(this.vec[0], c); return this; }
