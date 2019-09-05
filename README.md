@@ -71,6 +71,10 @@ After running this code each vector has separate component references and vector
 | [mulZ](#vector-multiplication) | multiplies the z component of a vector by a constant |
 | [mulXYZ](#vector-multiplication) | multiplies the x, y, and z components of a vector by a constant |
 | [mul](#vector-multiplication) | multiplies the components of one vector by the respective components of another |
+| [invertX](#vector-multiplication) | multiplies the x component of a vector by -1 |
+| [invertY](#vector-multiplication) | multiplies the y component of a vector by -1 |
+| [invertZ](#vector-multiplication) | multiplies the z component of a vector by -1 |
+| [invertXYZ](#vector-multiplication) | multiplies the x, y, and z components of a vector by -1 |
 | [scale](#vector-multiplication) | multiplies the x, y, and z components of a vector by the same constant |
 | [scaleTo](#vector-multiplication) | scales a vector such that the magnitude is equal to a constant |
 | [divX](#vector-division) | divides the x component of a vector by a constant |
@@ -86,6 +90,24 @@ After running this code each vector has separate component references and vector
 | [cross](#vector-products) | performs the cross product on a vector on another vector |
 | [magnitude](#vector-magnitude) | gets the magnitude of a vector |
 | [distanceTo](#vector-magnitude) | gets the magnitude of the distance between two vectors |
+| [maxX](#vector-clamping) | |
+| [maxY](#vector-clamping) | |
+| [maxZ](#vector-clamping) | |
+| [maxXYZ](#vector-clamping) | |
+| [max](#vector-clamping) | |
+| [minX](#vector-clamping) | |
+| [minY](#vector-clamping) | |
+| [minZ](#vector-clamping) | |
+| [minXYZ](#vector-clamping) | |
+| [min](#vector-clamping) | |
+| [clampX](#vector-clamping) | |
+| [clampY](#vector-clamping) | |
+| [clampZ](#vector-clamping) | |
+| [clampXYZ](#vector-clamping) | |
+| [clamp](#vector-clamping) | |
+| [projectLinear](#vector-projection) | |
+| [projectPlanarFromAxis](#vector-projection) | |
+| [projectPlanarFromNormal](#vector-projection) | |
 
 ### Getting Components
 ```javascript
@@ -160,6 +182,10 @@ vector1.mulY(2); // multiplies the y component by 2
 vector1.mulZ(2); // multiplies the z component by 2
 vector1.mulXYZ(2,3,4); // multiplies the x, y, and z components by 2, 3, and 4 respectfully
 vector1.mul(vector2); // multiplies the components of vector1 by the components of vector2 respectfully
+vector1.invertX(); // multiplies the x component by -1
+vector1.invertY(); // multiplies the y component by -1
+vector1.invertZ(); // multiplies the z component by -1
+vector1.invertXYZ(); // multiplies the x, y, and z components by -1
 vector1.scale(2); // multiplies each component by 2
 vector1.scaleTo(2); // multiplies each component such that the magnitude is 2
 var vector3 = vector1.getMulX(2); // creates a new vector with the x component multiplied by 2
@@ -167,8 +193,12 @@ var vector4 = vector1.getMulY(2); // creates a new vector with the y component m
 var vector5 = vector1.getMulZ(2); // creates a new vector with the z component multiplied by 2
 var vector6 = vector1.getMulXYZ(2,3,4); // creates a new vector with the x, y, and z components multiplied by 2, 3, and 4 respectfully
 var vector7 = vector1.getMul(vector2); // creates a new vector with the components of vector1 multiplied by the components of vector1 respectfully
-var vector8 = vector1.getScale(2); // creates a new vector with each component multiplied by 2
-var vector9 = vector1.getScaleTo(2); // creates a new vector with each component multiplied such that the magnitude is 2
+var vector8 = vector1.getInvertX(); // creates a new vector with the x component multiplied by -1
+var vector9 = vector1.getInvertY(); // creates a new vector with the x component multiplied by -1
+var vector10 = vector1.getInvertZ(); // creates a new vector with the x component multiplied by -1
+var vector11 = vector1.getInvertXYZ(); // creates a new vector with the x component multiplied by -1
+var vector12 = vector1.getScale(2); // creates a new vector with each component multiplied by 2
+var vector13 = vector1.getScaleTo(2); // creates a new vector with each component multiplied such that the magnitude is 2
 ```
 
 ### Vector Division
@@ -231,3 +261,7 @@ console.log(vector1.magnitude()); // logs "2"
 var vector2 = new Vec.V3(0,-1,-3);
 console.log(vector1.distanceTo(vector2)); // logs "4"
 ```
+
+### Vector Clamping
+
+### Vector Projection

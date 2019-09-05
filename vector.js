@@ -47,6 +47,14 @@ class V3 {
   scaleTo(c) { const m=this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2; if (m > 0) { c/=Math.sqrt(m); this.vec[0]*=c; this.vec[1]*=c; this.vec[2]*=c; } return this; }
   getScale(c) { return new V3(this.vec[0]*c, this.vec[1]*c, this.vec[2]*c); }
   getScaleTo(c) { const m=this.vec[0]**2 + this.vec[1]**2 + this.vec[2]**2; if (m > 0) { c/=Math.sqrt(m); return new V3(this.vec[0]*c, this.vec[1]*c, this.vec[2]*c); } return new V3(0,0,0); }
+  invertX() { this.vec[0]*=-1; return this; }
+  invertY() { this.vec[1]*=-1; return this; }
+  invertZ() { this.vec[2]*=-1; return this; }
+  invertXYZ() { this.vec[0]*=-1; this.vec[1]*=-1; this.vec[2]*=-1; return this; }
+  getInvertX() { return new V3(-this.vec[0], this.vec[1], this.vec[2]); }
+  getInvertY() { return new V3(this.vec[0], -this.vec[1], this.vec[2]); }
+  getInvertZ() { return new V3(this.vec[0], this.vec[1], -this.vec[2]); }
+  getInvertXYZ() { return new V3(-this.vec[0], -this.vec[1], -this.vec[2]); }
   divX(x) { this.vec[0]/=x; return this; }
   divY(y) { this.vec[1]/=y; return this; }
   divZ(z) { this.vec[2]/=z; return this; }
@@ -100,6 +108,9 @@ class V3 {
   getClampXYZ(lowX,lowY,lowZ,highX,highY,highZ) { return new V3(Math.max(lowX,Math.min(highX,this.vec[0])), Math.max(lowY,Math.min(highY,this.vec[1])), Math.max(lowZ,Math.min(highZ,this.vec[2]))); }
   getClamp(lowV,highV) { return new V3(Math.max(lowV.vec[0],Math.min(highV.vec[0],this.vec[0])), Math.max(lowV.vec[1],Math.min(highV.vec[1],this.vec[1])), Math.max(lowV.vec[2],Math.min(highV.vec[2],this.vec[2]))); }
 
+  projectLinear(vec) { const c=(this.vec[0]*vec.vec[0] + this.vec[1]*vec.vec[1] + this.vec[2]*vec.vec[2])/(vec.vec[0]**2 + vec.vec[1]**2 + vec.vec[2]**2); this.vec[0]=vec.vec[0]*c; this.vec[1]=vec.vec[1]*c; this.vec[2]=vec.vec[2]*c; return this; }
+  getProjectLinear(vec) { const c=(this.vec[0]*vec.vec[0] + this.vec[1]*vec.vec[1] + this.vec[2]*vec.vec[2])/(vec.vec[0]**2 + vec.vec[1]**2 + vec.vec[2]**2); return new V3(vec.vec[0]*c, vec.vec[1]*c, vec.vec[2]*c); }
+
   eulerRotateX(ax) { return this; }
   eulerRotateY(ay) { return this; }
   eulerRotateZ(az) { return this; }
@@ -109,7 +120,11 @@ class V3 {
   getEulerRotateZ(ax) { return new V3(); }
   getAxialRotate(ax) { return new V3(); }
   changeToBasis(xV,yV,zV) { return this; }
-  getChangeToBasis(xV,yV,zV) { return this; }
+  getChangeToBasis(xV,yV,zV) { return new V3(); }
+  projectPlanarFromAxis(ax1,ax2) { return this; }
+  getProjectPlanarFromAxis(ax1,ax2) { return new V3(); }
+  projectPlanarFromNormal(nVec) { return this; }
+  getProjectPlanarFromNormal(nVec) { return new V3(); }
 
   // vector intersection
   // area
