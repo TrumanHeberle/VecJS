@@ -305,7 +305,7 @@ console.log(vector.toString());
 The min operations set components to the maximum of their current value and a constant
 
 ```javascript
-var vector = new Vector(10,10,10);
+var vector = new Vec.V3(10,10,10);
 vector.minX(9);
 vector.minY(8);
 vector.minZ(7);
@@ -321,7 +321,7 @@ console.log(vector.toString());
 The clamp operations define a lower and an upper bound on the components they are used on.
 
 ```javascript
-var vector = new Vector(-5,5,0);
+var vector = new Vec.V3(-5,5,0);
 vector.clampX(0,10);
 vector.clampY(-10,2);
 vector.clampZ(5,10);
@@ -334,3 +334,25 @@ vector.clamp(new Vec.V3(0,-10,5), new Vec.V3(10,2,10));
 ```
 
 ### Vector Projection
+Vector projection is a very useful operation to have. It allows one vector to be projected onto the axis of another. Another way of thinking about this is the vector projection removes all components of the vector that isn't in the same direction as a specified vector.
+
+```javascript
+var vector = new Vec.V3(10,7,4);
+vector.projectLinear(new Vec.V3(1,0,0));
+// projects the vector variable onto the vector (x: 1, y: 0, z: 0)
+console.log(vector.toString()); // logs "(x: 10, y: 0, z: 0)"
+```
+
+That was only the case of linear projection. Another type of projection is projection of a vector onto a 2D plane. This can be visualized by imagining a vector coming out of a plane with a light pointing directly down onto the plane. The shadow cast from the vector onto the plane is the 2D planar projection of the vector. Specifying two unique vectors (vectors that are not scalar multiples of one another) or specifying a normal vector coming out of the plane identify a plane in 3D space. This is why there are two different planar projection operations in this library.
+
+```javascript
+var vector1 = new Vec.V3(10,7,4);
+vector1.projectPlanarFromNormal(new Vec.V3(0,0,1));
+// plane specified to have a normal vector (x: 0, y: 0, z: 1) aka the XY plane
+console.log(vector1.toString()); // logs "(x: 10, y: 7, z: 0)"
+
+var vector2 = new Vec.V3(10,7,4);
+vector2.projectPlanarFromAxis(new Vec.V3(1,0,0), new Vec.V3(0,1,0));
+// plane is still the XY plane
+console.log(vector2.toString()); // logs "(x: 10, y: 7, z: 0)"
+```

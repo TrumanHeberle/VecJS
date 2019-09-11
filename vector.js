@@ -114,11 +114,10 @@ class V3 {
   getClampZ(low,high) { return new V3(this.x, this.y, Math.max(low,Math.min(high,this.z))); }
   getClampXYZ(lowX,lowY,lowZ,highX,highY,highZ) { return new V3(Math.max(lowX,Math.min(highX,this.x)), Math.max(lowY,Math.min(highY,this.y)), Math.max(lowZ,Math.min(highZ,this.z))); }
   getClamp(lowV,highV) { return new V3(Math.max(lowV.x,Math.min(highV.x,this.x)), Math.max(lowV.y,Math.min(highV.y,this.y)), Math.max(lowV.z,Math.min(highV.z,this.z))); }
-
-  projectLinear(vec) { const c=(this.x*vec.x + this.y*vec.y + this.z*vec.z)/(vec.magnitude**2); this.x=vec.x*c; this.y=vec.y*c; this.z=vec.z*c; return this; }
+  projectLinear(vec) { if (this.magnitude===0 || vec.magnitude===0) { this.x=0; this.y=0; this.z=0; } else { const c=(this.x*vec.x + this.y*vec.y + this.z*vec.z)/(vec.magnitude**2); this.x=vec.x*c; this.y=vec.y*c; this.z=vec.z*c; } return this; }
   projectPlanarFromAxis(a1,a2) { const nx=a1.y*a2.z - a1.z*a2.y; const ny=a1.z*a2.x - a1.x*a2.z; const nz=a1.x*a2.y - a1.y*a2.x; if (nx!==0 || ny!==0 || nz!==0) { const c=(this.x*nx + this.y*ny + this.z*nz)/(nx**2 + ny**2 + nz**2); this.x-=nx*c; this.y-=ny*c; this.z-=nz*c; } return this; }
   projectPlanarFromNormal(nVec) { if (!nVec.isNull) { const c=(this.x*nVec.x + this.y*nVec.y + this.z*nVec.z)/(nVec.magnitude**2); this.x-=nVec.x*c; this.y-=nVec.y*c; this.z-=nVec.z*c; } return this; }
-  getProjectLinear(vec) { const c=(this.x*vec.x + this.y*vec.y + this.z*vec.z)/(vec.magnitude**2); return new V3(vec.x*c, vec.y*c, vec.z*c); }
+  getProjectLinear(vec) { if (this.magnitude===0 || vec.magnitude===0) { return new V3(0,0,0); } const c=(this.x*vec.x + this.y*vec.y + this.z*vec.z)/(vec.magnitude**2); return new V3(vec.x*c, vec.y*c, vec.z*c); }
   getProjectPlanarFromAxis(ax1,ax2) { const nx=a1.y*a2.z - a1.z*a2.y; const ny=a1.z*a2.x - a1.x*a2.z; const nz=a1.x*a2.y - a1.y*a2.x; if (nx!==0 || ny!==0 || nz!==0) { const c=(this.x*nx + this.y*ny + this.z*nz)/(nx**2 + ny**2 + nz**2); return new V3(this.x-nx*c, this.y-ny*c, this.z-nz*c); } return new V3(this.x, this.y, this.z); }
   getProjectPlanarFromNormal(nVec) { if (!nVec.isNull) { const c=(this.x*nVec.x + this.y*nVec.y + this.z*nVec.z)/(nVec.magnitude**2); return new V3(this.x-nVec.x*c, this.y-nVec.y*c, this.z-nVec.z*c); } return new V3(this.x, this.y, this.z); }
 
