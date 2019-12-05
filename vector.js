@@ -20,7 +20,7 @@ class V3 {
   toString() { return "(x: "+this.x+", y: "+this.y+", z: "+this.z+")"; }
   toJSON() { return {x: this.x, y: this.y, z: this.z}; }
   setX(x) { this.x=x; return this; }
-  setY(x) { this.y=y; return this; }
+  setY(y) { this.y=y; return this; }
   setZ(z) { this.z=z; return this; }
   setXYZ(x,y,z) { this.x=x; this.y=y; this.z=z; return this; }
   copy(vec) { this.x=vec.x; this.y=vec.y; this.z=vec.z; return this; }
@@ -84,7 +84,7 @@ class V3 {
   cross(vec) { const x=this.y*vec.z - this.z*vec.y; const y=this.z*vec.x - this.x*vec.z; this.z = this.x*vec.y - this.y*vec.x; this.x = x; this.y = y; return this; }
   getCross(vec) { return new V3(this.y*vec.z - this.z*vec.y, this.z*vec.x - this.x*vec.z, this.x*vec.y - this.y*vec.x); }
   angleBetween(vec) { return !this.isNull && !vec.isNull ? Math.acos((this.x*vec.x + this.y*vec.y + this.z*vec.z)/(this.magnitude*vec.magnitude)) : null; }
-  distanceTo(vec) { return Math.sqrt((this.x-other.x)**2 + (this.y-other.y)**2 + (this.z-other.z)**2); }
+  distanceTo(vec) { return Math.sqrt((this.x-vec.x)**2 + (this.y-vec.y)**2 + (this.z-vec.z)**2); }
   maxX(c) { this.x=Math.max(this.x, c); return this; }
   maxY(c) { this.x=Math.max(this.x, c); return this; }
   maxZ(c) { this.x=Math.max(this.x, c); return this; }
