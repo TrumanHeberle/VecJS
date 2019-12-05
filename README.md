@@ -31,7 +31,7 @@ vector.magnitude *= 2;
 console.log(vector.magnitude, vector.x, vector.y, vector.z); // logs "4 0 2 6"
 ```
 
-The full list of read only properties are as follows:
+The full list of properties are as follows:
 
 | Property | Description | Permissions |
 | --- | :--- | :--- |
@@ -79,6 +79,8 @@ After running this code each vector has separate component references and vector
 
 | Operation | Description |
 | --- | :--- |
+| [toString](#conversions) | gets a human readable string version of a vector |
+| [toJSON](#conversions) | gets a JSON version of a vector |
 | [setX](#setting-components) | sets the x component of a vector |
 | [setY](#setting-components) | sets the y component of a vector |
 | [setZ](#setting-components) | sets the z component of a vector |
@@ -156,6 +158,13 @@ vector.setX(1); // sets the x component value to 1
 vector.setY(1); // sets the y component value to 1
 vector.setZ(1); // sets the z component value to 1
 vector.setXYZ(0,1,2); // sets the x, y, and z component values to 0, 1, and 2 respectfully
+```
+
+### Conversions
+```javascript
+var vector = new Vec.V3(0,1,2);
+console.log(vector.toString()); // logs "(x: 0, y: 1, z: 2)"
+console.log(vector.toJSON()); // logs "{x: 0, y: 1, z: 2}"
 ```
 
 ### Copying Vectors

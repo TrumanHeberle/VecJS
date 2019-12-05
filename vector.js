@@ -18,6 +18,7 @@ class V3 {
   get isNull() { return this.vec[0]===0 && this.vec[1]===0 && this.vec[2]===0; }
 
   toString() { return "(x: "+this.x+", y: "+this.y+", z: "+this.z+")"; }
+  toJSON() { return {x: this.x, y: this.y, z: this.z}; }
   setX(x) { this.x=x; return this; }
   setY(x) { this.y=y; return this; }
   setZ(z) { this.z=z; return this; }
@@ -118,7 +119,7 @@ class V3 {
   projectPlanarFromAxis(a1,a2) { const nx=a1.y*a2.z - a1.z*a2.y; const ny=a1.z*a2.x - a1.x*a2.z; const nz=a1.x*a2.y - a1.y*a2.x; if (nx!==0 || ny!==0 || nz!==0) { const c=(this.x*nx + this.y*ny + this.z*nz)/(nx**2 + ny**2 + nz**2); this.x-=nx*c; this.y-=ny*c; this.z-=nz*c; } return this; }
   projectPlanarFromNormal(nVec) { if (!nVec.isNull) { const c=(this.x*nVec.x + this.y*nVec.y + this.z*nVec.z)/(nVec.magnitude**2); this.x-=nVec.x*c; this.y-=nVec.y*c; this.z-=nVec.z*c; } return this; }
   getProjectLinear(vec) { if (this.magnitude===0 || vec.magnitude===0) { return new V3(0,0,0); } const c=(this.x*vec.x + this.y*vec.y + this.z*vec.z)/(vec.magnitude**2); return new V3(vec.x*c, vec.y*c, vec.z*c); }
-  getProjectPlanarFromAxis(ax1,ax2) { const nx=a1.y*a2.z - a1.z*a2.y; const ny=a1.z*a2.x - a1.x*a2.z; const nz=a1.x*a2.y - a1.y*a2.x; if (nx!==0 || ny!==0 || nz!==0) { const c=(this.x*nx + this.y*ny + this.z*nz)/(nx**2 + ny**2 + nz**2); return new V3(this.x-nx*c, this.y-ny*c, this.z-nz*c); } return new V3(this.x, this.y, this.z); }
+  getProjectPlanarFromAxis(a1,a2) { const nx=a1.y*a2.z - a1.z*a2.y; const ny=a1.z*a2.x - a1.x*a2.z; const nz=a1.x*a2.y - a1.y*a2.x; if (nx!==0 || ny!==0 || nz!==0) { const c=(this.x*nx + this.y*ny + this.z*nz)/(nx**2 + ny**2 + nz**2); return new V3(this.x-nx*c, this.y-ny*c, this.z-nz*c); } return new V3(this.x, this.y, this.z); }
   getProjectPlanarFromNormal(nVec) { if (!nVec.isNull) { const c=(this.x*nVec.x + this.y*nVec.y + this.z*nVec.z)/(nVec.magnitude**2); return new V3(this.x-nVec.x*c, this.y-nVec.y*c, this.z-nVec.z*c); } return new V3(this.x, this.y, this.z); }
 
   eulerRotateX(ax) { return this; }
@@ -132,7 +133,6 @@ class V3 {
   changeToBasis(xV,yV,zV) { return this; }
   getChangeToBasis(xV,yV,zV) { return new V3(); }
 
-  // vector intersection
   // area
   // volume
   // lerp
