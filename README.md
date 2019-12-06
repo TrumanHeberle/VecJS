@@ -136,6 +136,7 @@ After running this code each vector has separate component references and vector
 | [projectLinear](#vector-projection) | projects a vector onto a line parallel to another vector |
 | [projectPlanarFromAxis](#vector-projection) | projects a vector onto the surface of a plane defined by two axis vectors |
 | [projectPlanarFromNormal](#vector-projection) | projects a vector onto the surface of a plane defined by a normal vector |
+| [changeToBasis](#vector-projection) | converts the components of a vector into components relative to another vector basis |
 
 ### Getting Components
 ```javascript
@@ -364,4 +365,13 @@ var vector2 = new Vec.V3(10,7,4);
 vector2.projectPlanarFromAxis(new Vec.V3(1,0,0), new Vec.V3(0,1,0));
 // plane is still the XY plane
 console.log(vector2.toString()); // logs "(x: 10, y: 7, z: 0)"
+```
+
+Vector projection is useful but sometimes it is necessary to [transform the basis](https://en.wikipedia.org/wiki/Change_of_basis) of the vector rather than the vector itself. This is often the case when changing coordinate systems. Changing a basis requires three unique vectors in order to successfully prevent dimensional reduction.
+
+```javascript
+var vector1 = new Vec.V3(10,7,4);
+vector1.changeToBasis(new Vec.V3(5,0,0), new Vec.V3(0,1,0), new Vec.V3(0,0,2));
+// the new basis is one where the x axis is scaled by 5, y axis is scaled by 1, and z axis is scaled by 2
+console.log(vector1.toString()); // logs "(x: 2, y: 7, z: 2)"
 ```

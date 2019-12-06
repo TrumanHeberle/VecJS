@@ -121,6 +121,8 @@ class V3 {
   getProjectLinear(vec) { if (this.magnitude===0 || vec.magnitude===0) { return new V3(0,0,0); } const c=(this.x*vec.x + this.y*vec.y + this.z*vec.z)/(vec.magnitude**2); return new V3(vec.x*c, vec.y*c, vec.z*c); }
   getProjectPlanarFromAxis(a1,a2) { const nx=a1.y*a2.z - a1.z*a2.y; const ny=a1.z*a2.x - a1.x*a2.z; const nz=a1.x*a2.y - a1.y*a2.x; if (nx!==0 || ny!==0 || nz!==0) { const c=(this.x*nx + this.y*ny + this.z*nz)/(nx**2 + ny**2 + nz**2); return new V3(this.x-nx*c, this.y-ny*c, this.z-nz*c); } return new V3(this.x, this.y, this.z); }
   getProjectPlanarFromNormal(nVec) { if (!nVec.isNull) { const c=(this.x*nVec.x + this.y*nVec.y + this.z*nVec.z)/(nVec.magnitude**2); return new V3(this.x-nVec.x*c, this.y-nVec.y*c, this.z-nVec.z*c); } return new V3(this.x, this.y, this.z); }
+  changeToBasis(xV,yV,zV) { const det=-xV.z*yV.y*zV.x+xV.y*yV.z*zV.x+xV.z*yV.x*zV.y-xV.x*yV.z*zV.y-xV.y*yV.x*zV.z+xV.x*yV.y*zV.z; if (det!==0) { const x = (this.z*(xV.y*yV.z-xV.z*yV.y) + this.y*(xV.z*zV.y-xV.y*zV.z) + this.x*(yV.y*zV.z-yV.z*zV.y))/det; const y = (this.z*(xV.z*yV.x-xV.x*yV.z) + this.y*(xV.x*zV.z-xV.z*zV.x) + this.x*(yV.z*zV.x-yV.x*zV.z))/det; this.z = (this.z*(xV.x*yV.y-xV.y*yV.x) + this.y*(xV.y*zV.x-xV.x*zV.y) + this.x*(yV.x*zV.y-yV.y*zV.x))/det; this.x = x; this.y = y; } return this; }
+  getChangeToBasis(xV,yV,zV) { const det=-xV.z*yV.y*zV.x+xV.y*yV.z*zV.x+xV.z*yV.x*zV.y-xV.x*yV.z*zV.y-xV.y*yV.x*zV.z+xV.x*yV.y*zV.z; if (det!==0) { return new V3((this.z*(xV.y*yV.z-xV.z*yV.y)+this.y*(xV.z*zV.y-xV.y*zV.z)+this.x*(yV.y*zV.z-yV.z*zV.y))/det,(this.z*(xV.z*yV.x-xV.x*yV.z)+this.y*(xV.x*zV.z-xV.z*zV.x)+this.x*(yV.z*zV.x-yV.x*zV.z))/det,(this.z*(xV.x*yV.y-xV.y*yV.x)+this.y*(xV.y*zV.x-xV.x*zV.y)+this.x*(yV.x*zV.y-yV.y*zV.x))/det); } return new V3(this.x,this.y,this.z); }
 
   eulerRotateX(ax) { return this; }
   eulerRotateY(ay) { return this; }
@@ -130,13 +132,10 @@ class V3 {
   getEulerRotateY(ax) { return new V3(); }
   getEulerRotateZ(ax) { return new V3(); }
   getAxialRotate(ax) { return new V3(); }
-  changeToBasis(xV,yV,zV) { return this; }
-  getChangeToBasis(xV,yV,zV) { return new V3(); }
 
   // area
   // volume
   // lerp
-  // change basis
 }
 
 window.Vec = { V3: V3 }
