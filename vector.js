@@ -19,6 +19,7 @@ class V3 {
 
   toString() { return "(x: "+this.x+", y: "+this.y+", z: "+this.z+")"; }
   toJSON() { return {x: this.x, y: this.y, z: this.z}; }
+  toArray() { return [this.x, this.y, this.z]; }
   setX(x) { this.x=x; return this; }
   setY(y) { this.y=y; return this; }
   setZ(z) { this.z=z; return this; }
