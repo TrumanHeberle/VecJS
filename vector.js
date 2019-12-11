@@ -123,14 +123,38 @@ class V3 {
   getProjectPlanarFromNormal(nVec) { if (!nVec.isNull) { const c=(this.x*nVec.x + this.y*nVec.y + this.z*nVec.z)/(nVec.magnitude**2); return new V3(this.x-nVec.x*c, this.y-nVec.y*c, this.z-nVec.z*c); } return new V3(this.x, this.y, this.z); }
   changeToBasis(xV,yV,zV) { const det=-xV.z*yV.y*zV.x+xV.y*yV.z*zV.x+xV.z*yV.x*zV.y-xV.x*yV.z*zV.y-xV.y*yV.x*zV.z+xV.x*yV.y*zV.z; if (det!==0) { const x = (this.z*(xV.y*yV.z-xV.z*yV.y) + this.y*(xV.z*zV.y-xV.y*zV.z) + this.x*(yV.y*zV.z-yV.z*zV.y))/det; const y = (this.z*(xV.z*yV.x-xV.x*yV.z) + this.y*(xV.x*zV.z-xV.z*zV.x) + this.x*(yV.z*zV.x-yV.x*zV.z))/det; this.z = (this.z*(xV.x*yV.y-xV.y*yV.x) + this.y*(xV.y*zV.x-xV.x*zV.y) + this.x*(yV.x*zV.y-yV.y*zV.x))/det; this.x = x; this.y = y; } return this; }
   getChangeToBasis(xV,yV,zV) { const det=-xV.z*yV.y*zV.x+xV.y*yV.z*zV.x+xV.z*yV.x*zV.y-xV.x*yV.z*zV.y-xV.y*yV.x*zV.z+xV.x*yV.y*zV.z; if (det!==0) { return new V3((this.z*(xV.y*yV.z-xV.z*yV.y)+this.y*(xV.z*zV.y-xV.y*zV.z)+this.x*(yV.y*zV.z-yV.z*zV.y))/det,(this.z*(xV.z*yV.x-xV.x*yV.z)+this.y*(xV.x*zV.z-xV.z*zV.x)+this.x*(yV.z*zV.x-yV.x*zV.z))/det,(this.z*(xV.x*yV.y-xV.y*yV.x)+this.y*(xV.y*zV.x-xV.x*zV.y)+this.x*(yV.x*zV.y-yV.y*zV.x))/det); } return new V3(this.x,this.y,this.z); }
+  eulerRotateX(ax) { const c=Math.cos(ax),s=Math.sin(ax),y=this.y; this.y=c*y-this.z*s; this.z=c*this.z+y*s; return this; }
+  eulerRotateY(ay) { const c=Math.cos(ay),s=Math.sin(ay),x=this.x; this.x=c*x+this.z*s; this.z=c*this.z-x*s; return this; }
+  eulerRotateZ(az) { const c=Math.cos(az),s=Math.sin(az),x=this.x; this.x=c*x-this.y*s; this.y=c*this.y+x*s; return this; }
+  getEulerRotateX(ax) { const c=Math.cos(ax),s=Math.sin(ax); return new V3(this.x,c*this.y-this.z*s,c*this.z+this.y*s); }
+  getEulerRotateY(ay) { const c=Math.cos(ay),s=Math.sin(ay); return new V3(c*this.x+this.z*s,this.y,c*this.z-this.x*s); }
+  getEulerRotateZ(az) { const c=Math.cos(az),s=Math.sin(az); return new V3(c*this.x-this.y*s,c*this.y+this.x*s,this.z); }
+  floorX() { this.x=Math.floor(this.x); return this; }
+  floorY() { this.y=Math.floor(this.y); return this; }
+  floorZ() { this.z=Math.floor(this.z); return this; }
+  floor() { this.x=Math.floor(this.x); this.y=Math.floor(this.y); this.z=Math.floor(this.z); return this; }
+  getFloorX() { return new V3(Math.floor(this.x),this.y,this.z); }
+  getFloorY() { return new V3(this.x,Math.floor(this.y),this.z); }
+  getFloorZ() { return new V3(this.x,this.y,Math.floor(this.z)); }
+  getFloor() { return new V3(Math.floor(this.x),Math.floor(this.y),Math.floor(this.z)); }
+  ceilX() { this.x=Math.ceil(this.x); return this; }
+  ceilY() { this.y=Math.ceil(this.y); return this; }
+  ceilZ() { this.z=Math.ceil(this.z); return this; }
+  ceil() { this.x=Math.ceil(this.x); this.y=Math.ceil(this.y); this.z=Math.ceil(this.z); return this; }
+  getCeilX() { return new V3(Math.ceil(this.x),this.y,this.z); }
+  getCeilY() { return new V3(this.x,Math.ceil(this.y),this.z); }
+  getCeilZ() { return new V3(this.x,this.y,Math.ceil(this.z)); }
+  getCeil() { return new V3(Math.ceil(this.x),Math.ceil(this.y),Math.ceil(this.z)); }
+  roundX() { this.x=Math.round(this.x); return this; }
+  roundY() { this.y=Math.round(this.y); return this; }
+  roundZ() { this.z=Math.round(this.z); return this; }
+  round() { this.x=Math.round(this.x); this.y=Math.round(this.y); this.z=Math.round(this.z); return this; }
+  getRoundX() { return new V3(Math.round(this.x),this.y,this.z); }
+  getRoundY() { return new V3(this.x,Math.round(this.y),this.z); }
+  getRoundZ() { return new V3(this.x,this.y,Math.round(this.z)); }
+  getRound() { return new V3(Math.round(this.x),Math.round(this.y),Math.round(this.z)); }
 
-  eulerRotateX(ax) { return this; }
-  eulerRotateY(ay) { return this; }
-  eulerRotateZ(az) { return this; }
   axialRotate(vec, angle) { return this; }
-  getEulerRotateX(ax) { return new V3(); }
-  getEulerRotateY(ax) { return new V3(); }
-  getEulerRotateZ(ax) { return new V3(); }
   getAxialRotate(ax) { return new V3(); }
 
   // area
