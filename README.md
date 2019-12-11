@@ -148,24 +148,36 @@ Be careful when using getter operations like these, they can not be changed dire
 
 ```javascript
 var vector = new Vec.V3(0,1,2);
-vector.x = 10;
-console.log(vector.x); // logs "0"
+vector.unitX = 10;
+console.log(vector.unitX); // logs "0"
 ```
 
 ### Setting Components
+There are two ways to set components of a vector. The first is to directly manipulate the components such as the example below.
 ```javascript
 var vector = new Vec.V3(0,1,2);
+vector.x = 2; // sets the x component value to 2
+vector.y = 2; // sets the y component value to 2
+vector.z = 2; // sets the z component value to 2
+```
+
+The second way is to set the components using vector operations. Both methods ultimately do the same thing but the set operation below is chainable.
+```javascript
 vector.setX(1); // sets the x component value to 1
 vector.setY(1); // sets the y component value to 1
 vector.setZ(1); // sets the z component value to 1
 vector.setXYZ(0,1,2); // sets the x, y, and z component values to 0, 1, and 2 respectfully
+
+vector.setXYZ(1,3,5).addX(2); // this is the benefit of using the set operation rather than direct manipulation
 ```
+
 
 ### Conversions
 ```javascript
 var vector = new Vec.V3(0,1,2);
 console.log(vector.toString()); // logs "(x: 0, y: 1, z: 2)"
 console.log(vector.toJSON()); // logs "{x: 0, y: 1, z: 2}"
+console.log(vector.toArray()); // logs "(3) [0, 1, 2]"
 ```
 
 ### Copying Vectors
