@@ -25,7 +25,7 @@ class V3 {
   setXYZ(x,y,z) { this.x=x; this.y=y; this.z=z; return this; }
   copy(vec) { this.x=vec.x; this.y=vec.y; this.z=vec.z; return this; }
   clone() { return new V3(this.x, this.y, this.z); }
-  equals(vec) { return this.x===vec.x && this.y===vec.y && this.z===vec.z; }
+  equals(vec) { return vec instanceof V3 && this.x===vec.x && this.y===vec.y && this.z===vec.z; }
   addX(x) { this.x+=x; return this; }
   addY(y) { this.y+=y; return this; }
   addZ(z) { this.z+=z; return this; }
