@@ -1,7 +1,7 @@
 if (window.Vec) { console.warn("Vec module already exists, overwriting..."); }
 
 class V3 {
-  constructor(x,y,z) { this.vec = new Float32Array([x,y,z]); }
+  constructor(x,y,z) { this.vec = new Float32Array(3); this.vec[0]=x; this.vec[1]=y; this.vec[2]=z; }
   get buffer() { return this.vec.buffer; }
   set buffer(buffer) { this.vec=new Float32Array(buffer); }
   get x() { return this.vec[0]; }
