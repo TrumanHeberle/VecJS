@@ -133,10 +133,25 @@ After running this code each vector has separate component references and vector
 | [clampZ](#vector-clamping) | limits the z component of a vector to a constant maximum and a constant minimum |
 | [clampXYZ](#vector-clamping) | limits the x, y, and z components of a vector to a constant maximum and a constant minimum |
 | [clamp](#vector-clamping) | limits the components of a vector to a minimum and maximum of the respective components of other vectors |
+| [floorX](#vector-clamping) | rounds down the x component of a vector to an integer value |
+| [floorY](#vector-clamping) | rounds down the y component of a vector to an integer value |
+| [floorZ](#vector-clamping) | rounds down the z component of a vector to an integer value |
+| [floor](#vector-clamping) | rounds down the x, y, and z components of a vector to an integer value |
+| [ceilX](#vector-clamping) | rounds up the x component of a vector to an integer value |
+| [ceilY](#vector-clamping) | rounds up the y component of a vector to an integer value |
+| [ceilZ](#vector-clamping) | rounds up the z component of a vector to an integer value |
+| [ceil](#vector-clamping) | rounds up the x, y, and z components of a vector to an integer value |
+| [roundX](#vector-clamping) | rounds the x component of a vector to an integer value |
+| [roundY](#vector-clamping) | rounds the y component of a vector to an integer value |
+| [roundZ](#vector-clamping) | rounds the z component of a vector to an integer value |
+| [round](#vector-clamping) | rounds the x, y, and z components of a vector to an integer value |
 | [projectLinear](#vector-projection) | projects a vector onto a line parallel to another vector |
 | [projectPlanarFromAxis](#vector-projection) | projects a vector onto the surface of a plane defined by two axis vectors |
 | [projectPlanarFromNormal](#vector-projection) | projects a vector onto the surface of a plane defined by a normal vector |
 | [changeToBasis](#vector-projection) | converts the components of a vector into components relative to another vector basis |
+| [eulerRotateX](#vector-rotation) | rotates a vector by an angle about the x axis |
+| [eulerRotateY](#vector-rotation) | rotates a vector by an angle about the y axis |
+| [eulerRotateZ](#vector-rotation) | rotates a vector by an angle about the z axis |
 
 ### Getting Components
 ```javascript
@@ -355,6 +370,17 @@ vector.clamp(new Vec.V3(0,-10,5), new Vec.V3(10,2,10));
 // both of the statments above are equivalent to the individual component clamps applied earlier
 ```
 
+The floor, ceil, and round operations operate similarly to the standard Math.floor, Math.ceil, and Math.round operations.
+
+```javascript
+var vector = new Vec.V3(0.7,0.2,0.5);
+vector.floorX();
+vector.ceilY();
+vector.roundZ();
+console.log(vector.toString());
+// logs "(x: 0, y: 1, z: 1)"
+```
+
 ### Vector Projection
 Vector projection is a very useful operation to have. It allows one vector to be projected onto the axis of another. Another way of thinking about this is the vector projection removes all components of the vector that isn't in the same direction as a specified vector.
 
@@ -386,4 +412,25 @@ var vector1 = new Vec.V3(10,7,4);
 vector1.changeToBasis(new Vec.V3(5,0,0), new Vec.V3(0,1,0), new Vec.V3(0,0,2));
 // the new basis is one where the x axis is scaled by 5, y axis is scaled by 1, and z axis is scaled by 2
 console.log(vector1.toString()); // logs "(x: 2, y: 7, z: 2)"
+```
+
+### Vector Rotation
+Vector rotation is useful in many applications. The Euler rotation operations are the standard rotation operations about the x, y, and z axis. All rotation angles should be specified in radians. Rotation is clockwise looking in the direction of the axis from the center of rotation.
+
+```javascript
+var vector = new Vec.V3(0,0,1);
+vector.eulerRotateX(Math.PI/2); // 90 degrees clockwise about (1,0,0)
+console.log(vector.toString());
+// logs "(x: 0, y: -1, z: 0)"
+```
+
+Note, rotation is not a commutative operation so rotation order matters. For example, a vector rotated about the x then the y axis may not be equal to the same vector rotated about the y then the x axis by the same angles.
+
+```javascript
+var vector = new Vec.V3(0,0,1);
+var finalv1 = vector.getEulerRotateX(Math.PI/2).eulerRotateY(Math.PI/2);
+var finalv2 = vector.getEulerRotateY(Math.PI/2).eulerRotateX(Math.PI/2);
+console.log(finalv1.toString(), finalv2.toString());
+// logs "(x: 0, y: -1, z: 0) (x: 1, y: 0, z: 0)"
+// rotation order matters
 ```
