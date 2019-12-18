@@ -81,6 +81,7 @@ After running this code each vector has separate component references and vector
 | --- | :--- |
 | [toString](#conversions) | gets a human readable string version of a vector |
 | [toJSON](#conversions) | gets a JSON version of a vector |
+| [toArray](#conversions) | gets an Array version of a vector |
 | [setX](#setting-components) | sets the x component of a vector |
 | [setY](#setting-components) | sets the y component of a vector |
 | [setZ](#setting-components) | sets the z component of a vector |
